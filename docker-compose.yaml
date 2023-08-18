@@ -1,4 +1,4 @@
-version:'3.8'
+version: '3.8'
 services:
   rasi-ui-code: 
     image: rasi-web:appv$BUILD_NUMBER
