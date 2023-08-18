@@ -1,0 +1,10 @@
+version:'3.8'
+services:
+  rasi-ui-code: 
+    image: rasi-web:appv$BUILD_NUMBER
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rasi-web-c1
+    ports:
+      - 1234:80
