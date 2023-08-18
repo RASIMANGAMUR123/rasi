@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
     container_name: rasi-web-c1
     ports:
-      - 1234:80
+      - 2289:80
