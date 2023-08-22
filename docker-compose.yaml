@@ -5,6 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: rasi-web-c1
+    container_name: rasi-web-c6
     ports:
-      - 2289:80
+      - 2280:80
