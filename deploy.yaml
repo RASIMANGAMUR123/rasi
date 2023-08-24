@@ -1,0 +1,58 @@
+# creating namespace 
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: rasi-jk-deploy # change this part 
+spec: {}
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rasi-webapp
+  name: rasi-webapp # name of deployment 
+  namespace: rasijk-deploy # add namespace 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasi-webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels: # check label of pods
+        app: rasi-webapp
+    spec:
+      containers:
+      - image: mangamurirasi123/rasi-cloud4c-app:version23 # change docker with your image 
+        name: rasi-cloud4c-app
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+
+# creating nodeport service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rasilb1
+  name: rasilb1 # change name 
+  namespace: rasi-jk-deploy # add this 
+spec:
+  ports:
+  - name: 2280:80
+    port:2280
+    protocol: TCP
+    targetPort: 80
+  selector: # selector also 
+   app: ashu-webapp # label 
+  type: NodePort
+status:
+  loadBalancer: {}
